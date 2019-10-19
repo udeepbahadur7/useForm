@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import Editor from "./Editor";
+import Display from "./Display";
 function App() {
+  const [formData, setFormData] = useState({});
+  const submitData = newData => {
+    setFormData(newData);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div classname='container-fluid'>
+      <div className='row p-2'>
+        <div className='col-6'>
+          <Editor submit={submitData} />
+        </div>
+        <div className='col-6'>
+          {" "}
+          <Display data={formData} />
+        </div>
+      </div>
     </div>
   );
 }
